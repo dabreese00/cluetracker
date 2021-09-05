@@ -106,6 +106,19 @@ class Pass(HavePass):
 
 
 class Show(ClueRelation):
-    """An indication that a player has shown one of a set of 3 cards."""
+    """An indication that a player has shown one of a set of 3 cards.
 
-    cards = models.ManyToManyField(Card)
+    person - the PersonCard that was possibly shown
+    weapon - the WeaponCard that was possibly shown
+    room - the RoomCard that was possibly shown
+    """
+
+    person = models.ForeignKey(
+        PersonCard,
+        on_delete=models.CASCADE)
+    weapon = models.ForeignKey(
+        WeaponCard,
+        on_delete=models.CASCADE)
+    room = models.ForeignKey(
+        RoomCard,
+        on_delete=models.CASCADE)
