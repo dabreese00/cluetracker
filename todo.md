@@ -14,13 +14,25 @@ DRF testing tools: https://www.django-rest-framework.org/api-guide/testing/
 Example of well-written Django/DRF test suite (Netbox): https://github.com/netbox-community/netbox/blob/develop/netbox/dcim/tests/test_api.py
 
 
-## Write better model tests
+## Basic model validation
 
-2 hours
+Brainstorm:
+- Haves, Passes, and Shows players and cards' Games must be consistent.
+- Haves and Passes cannot contradict each other.
+- Haves and Passes cannot be duplicate.  (How to handle duplicate creation
+  attempt?)
+- Shows cannot be for all-passed cards.
+- Player Haves cannot exceed hand_size.
+- Player Passes cannot exceed ncards - hand_size.
+- Card passes cannot exceed nplayers.
 
-Observe how Netbox tests their models: https://github.com/netbox-community/netbox/blob/develop/netbox/dcim/tests/test_models.py
 
-They are testing interactions.
+## Firewall API views to enforce game-consistency
+
+Require all Player, Card, Have, Pass, and Show list views to refer to a
+specific game in order to retrieve data.
+
+https://www.django-rest-framework.org/api-guide/filtering/#custom-generic-filtering
 
 
 ## Look into why API doesn't seem to be requiring authentication
@@ -51,6 +63,8 @@ Or, add a `card_type` to the base model, default to Null, and then have it
 auto-initialized to hard-coded values for the subclasses?  Is that any better
 than just reverting to having a card_type field as a Django TextChoice nested
 class?
+
+Here is how Netbox does choices: https://github.com/netbox-community/netbox/blob/27c0e6dd5e8732483533dbf3d4333a81fe9e7948/netbox/dcim/choices.py#L135
 
 
 ## Override the Game create view/serializer to improve workflow

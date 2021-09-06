@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from games.models import (Game, Player, Card, PersonCard, WeaponCard, RoomCard,
-                          Have, Pass, Show)
+from games.models import (Game, Player, Card, Have, Pass, Show)
 
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
@@ -18,25 +17,7 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
 class CardSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Card
-        fields = ['url', 'name', 'game']
-
-
-class PersonCardSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = PersonCard
-        fields = ['url', 'name', 'game']
-
-
-class WeaponCardSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = WeaponCard
-        fields = ['url', 'name', 'game']
-
-
-class RoomCardSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = RoomCard
-        fields = ['url', 'name', 'game']
+        fields = ['url', 'name', 'kind', 'game']
 
 
 class HaveSerializer(serializers.HyperlinkedModelSerializer):
