@@ -7,41 +7,41 @@ from games.api.serializers import (GameSerializer, PlayerSerializer,
 
 class GameViewSet(viewsets.ModelViewSet):
     """API endpoints to allow viewing and editing games."""
-    queryset = Game.objects.all()
+    queryset = Game.objects.all().order_by('id')
     serializer_class = GameSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
 class PlayerViewSet(viewsets.ModelViewSet):
     """API endpoints to allow viewing and editing players."""
-    queryset = Player.objects.all()
+    queryset = Player.objects.all().order_by('id')
     serializer_class = PlayerSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
 class CardViewSet(viewsets.ModelViewSet):
     """API endpoints to allow viewing and editing cards."""
-    queryset = Card.objects.all()
+    queryset = Card.objects.all().order_by('id')
     serializer_class = CardSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
 class HaveViewSet(viewsets.ModelViewSet):
     """API endpoints to allow viewing and editing Haves."""
-    queryset = Have.objects.all()
+    queryset = Have.objects.all().order_by('id')
     serializer_class = HaveSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
 class PassViewSet(viewsets.ModelViewSet):
     """API endpoints to allow viewing and editing Passes."""
-    queryset = Pass.objects.all()
+    queryset = Pass.objects.all().order_by('id')
     serializer_class = PassSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
 class ShowViewSet(viewsets.ModelViewSet):
     """API endpoints to allow viewing and editing Shows."""
-    queryset = Show.objects.all()
+    queryset = Show.objects.all().order_by('id')
     serializer_class = ShowSerializer
     permission_classes = [permissions.IsAuthenticated]
