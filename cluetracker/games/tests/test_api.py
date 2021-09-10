@@ -2,9 +2,6 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.test import TestCase
 from rest_framework.test import APIClient
-from django.forms.models import model_to_dict
-from django.core.exceptions import FieldDoesNotExist
-from django.db.models import ManyToManyField, ForeignKey
 from rest_framework import status
 from games.models import Game, Player, Card, Have, Pass, Show
 
@@ -61,31 +58,17 @@ class APITestCase(TestCase):
         """
         Return a dictionary representation of an instance.
         """
-        # Call Django's model_to_dict() to extract all fields
-        model_dict = model_to_dict(instance, fields=fields)
-
-        # Map any additional (non-field) instance attributes that were
-        # specified
-        for attr in fields:
-            if hasattr(instance, attr) and attr not in model_dict:
-                model_dict[attr] = getattr(instance, attr)
-
-        for key, value in list(model_dict.items()):
-            try:
-                field = instance._meta.get_field(key)
-            except FieldDoesNotExist:
-                # Attribute is not a model field
-                continue
-
-            # Convert ForeignKeys to hyperlinks
-            if value and type(field) == ForeignKey:
-                model_dict[key] = self._get_detail_url(getattr(instance, key))
-
-            # Handle ManyToManyFields
-            if value and type(field) == ManyToManyField:
-                model_dict[key] = sorted([self._get_detail_url(obj) for obj in getattr(instance, key)])  # noqa: 501
-
-        return model_dict
+        instance_fields = instance._meta.get_fields()
+        relevant_fields = [f for f in instance_fields if f.name in fields]
+        data = {}
+        for f in relevant_fields:
+            if f.many_to_many or f.one_to_many:
+                data[f.name] = sorted([self._get_detail_url(obj) for obj in getattr(instance, f.name).all()])  # noqa: 501
+            elif f.many_to_one:
+                data[f.name] = self._get_detail_url(getattr(instance, f.name))
+            elif f.concrete:
+                data[f.name] = f.value_from_object(instance)
+        return data
 
     def assertInstanceEqual(self, instance, data, exclude=None):
         """
