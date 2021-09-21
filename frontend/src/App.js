@@ -3,6 +3,7 @@ import Api from './api';
 
 const username = 'admin';
 const password = 'admin';
+const api = new Api();
 
 function Login () {
   return (
@@ -12,8 +13,47 @@ function Login () {
   );
 }
 
+//function PlayerList() {
+//  const [players, setPlayers] = useState({});
+//
+//  return (
+//    <div>
+//      {players.results.map(item => (
+//        <div key={item.id}>
+//          <h2>Player {item.name}</h2>
+//          <span><p>{item.hand_size}</p></span>
+//          <span><p>{item.url}</p></span>
+//        </div>
+//      ))}
+//    </div>
+//  );
+//}
+//
+//function AddPlayer() {
+//  return (
+//    <form>
+//      <label>
+//        Name:
+//        <input type="text" name="name"/>
+//        <input type="text" name="cardcount"/>
+//      </label>
+//      <input type="submit" value="Add"/>
+//    </form>
+//  );
+//}
+//
+//function CreateGame() {
+//  // state i
+//  return (
+//    <div>
+//      <PlayerList />
+//      <AddPlayer />
+//      <input type="submit" value="Done entering players"/>
+//    </div>
+//  );
+//}
+
 function App () {
-  const [api] = useState(new Api())
   const [games, setGames] = useState(
     {
       "count": 0,
@@ -21,7 +61,7 @@ function App () {
       "previous": null,
       "results": []
     }
-  )
+  );
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -34,7 +74,7 @@ function App () {
     }).catch(e => {
       console.log('Getting games failed!')
     });
-  });
+  }, []);
 
   return (
     <div>

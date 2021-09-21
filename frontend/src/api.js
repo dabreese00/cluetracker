@@ -2,7 +2,7 @@ class Api {
 
   async getToken (username, password) {
     const res = await fetch(
-      'http://127.0.0.1:8000/api-token-auth/',
+      process.env.REACT_APP_API_TOKEN_ENDPOINT,
       {
         method: 'POST',
         headers: {
@@ -17,7 +17,7 @@ class Api {
 
   async listGames (token) {
     const res = await fetch(
-      'http://127.0.0.1:8000/api/games/games',
+      process.env.REACT_APP_API_GAMES_LIST_ENDPOINT,
       {
         headers: {
           Authorization: 'Token ' + token

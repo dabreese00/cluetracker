@@ -1,3 +1,7 @@
+## Tests failing
+
+Fix tests to accept either 401 or 403 on unauthorized access.
+
 ## Basic model validation
 
 Brainstorm:

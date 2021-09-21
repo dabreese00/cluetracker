@@ -1,12 +1,25 @@
 version: "3.9"
 services:
   web:
-    build: .
+    build: 
+      context: ./frontend
+      dockerfile: ./Dockerfile
     volumes:
-      - .:/usr/src/app
+      - ./frontend:/usr/src/app
+    ports:
+      - "5000:5000"
+    env_file: ./frontend/.env-docker
+    depends_on:
+      - "api"
+  api:
+    build:
+      context: ./cluetracker
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./cluetracker:/usr/src/app
     ports:
       - "8000:8000"
-    env_file: .env-docker
+    env_file: ./cluetracker/.env-docker
     depends_on:
       - "db"
   db:

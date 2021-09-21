@@ -6,36 +6,66 @@ which cards.
 
 ## Develop
 
-Development can be done using docker-compose with gunicorn and postgres,
-instead of the built-in Django development server.
-
-To run it:
+Development can be done using docker-compose.  To run it:
 
 1.  Install Docker and `docker-compose`.
-2.  Pass the environment variables to docker using `.env-docker` and `.env-docker-postgres`.
-    1. Required variables for Django: `DJANGO_SECRET_KEY`, `DJANGO_ALLOWED_HOSTS`, `DATABASE_URL`.
-    2. Required variables for postgres: `POSTGRES_USER`, `POSTGRES_PASSWORD`.
+2.  Adjust the environment variables in the `.env-docker` files and `.env-docker-postgres` if necessary.
 3.  Run `docker-compose build`.
 4.  Run `docker-compose up`.
-5.  Access the server on `localhost:8000`.
-
-For development you can set the `DJANGO_ALLOWED_HOSTS` to be `*`.
+5.  Access the API server on `localhost:8000`.
+6.  Access the web server on `localhost:5000`.
 
 If the web service fails to start at first because postgres is not available
 yet, stop the docker containers (without destroying them) and try again.
 (TODO: Implement a check-and-wait till postgres is up, using e.g.
 `django-probes`.)
 
+### Develop with frameworks' local dev servers
+
+Alternately, you can use Django's and React's built-in development servers to develop.  In this case, adjust the `.env` files appropriately, and then open two terminal windows.
+
+In the first, run:
+
+    export DJANGO_READ_DOT_ENV_FILE=True
+    cd cluetracker
+    python manage.py migrate
+    python manage.py runserver
+
+In the second, run:
+
+    cd frontend
+    npm install
+    npm start
+
+The first assumes you've already setup a Python virtualenv with all the required dependencies installed.  If not, do that first:
+
+    python3 -m venv .venv
+    source .venv/bin/activate
+    python -m pip install --upgrade pip
+    pip install pip-tools
+    pip-sync requirements.txt dev-requirements.txt
+
+The second assumes you've already installed [Node](https://nodejs.org/en/) version 16 or higher.  If not, do that first, recommend using [nvm](https://github.com/nvm-sh/nvm).
+
+
+### Develop the web frontend
+
+To do.
+
+
+### Develop the Django REST API
+
 To run tests in docker, after the docker-compose is up and running, use the
 following command:
 
-    docker-compose exec web cluetracker/manage.py test
+    docker-compose exec api manage.py test
 
 Append whatever test modules you want to run to the end of the argument list.
 
 You can alternatively run tests locally, if you've got Python and a virtual env:
 
-    cluetracker/manage.py test
+    cluetracker/manage.py test games.tests.test_models
+    cluetracker/manage.py test games.tests.test_api
 
 When doing so, don't forget to `migrate` first (the Docker method automates
 this).
