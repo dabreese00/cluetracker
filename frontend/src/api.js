@@ -1,12 +1,18 @@
 class Api {
 
+  constructor() {
+    this.token_endpoint = process.env.REACT_APP_API_TOKEN_ENDPOINT;
+    this.games_list_endpoint = process.env.REACT_APP_API_GAMES_LIST_ENDPOINT;
+    this.content_type = 'application/json;charset=utf-8';
+  }
+
   async getToken (username, password) {
     const res = await fetch(
-      process.env.REACT_APP_API_TOKEN_ENDPOINT,
+      this.token_endpoint,
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json;charset=utf-8'
+          'Content-Type': this.content_type
         },
         body: JSON.stringify({username: username, password: password})
       }
@@ -17,7 +23,7 @@ class Api {
 
   async listGames (token) {
     const res = await fetch(
-      process.env.REACT_APP_API_GAMES_LIST_ENDPOINT,
+      this.games_list_endpoint,
       {
         headers: {
           Authorization: 'Token ' + token

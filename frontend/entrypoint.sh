@@ -2,7 +2,9 @@
 
 set -e
 
-echo "{0}: build and optimize react app."
-npm run build
+if ! test -d ./build; then
+    echo "{0}: build and optimize react app."
+    npm run build
+fi
 
 npm run start:prod

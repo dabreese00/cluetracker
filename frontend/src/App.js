@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Api from './api';
 
-const username = 'admin';
-const password = 'admin';
+const username = process.env.REACT_APP_API_USERNAME;
+const password = process.env.REACT_APP_API_PASSWORD;
 const api = new Api();
 
 function Login () {
