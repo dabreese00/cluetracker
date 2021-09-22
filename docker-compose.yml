@@ -5,9 +5,10 @@ services:
       context: ./frontend
       dockerfile: ./Dockerfile
     volumes:
-      - ./frontend:/usr/src/app
+      - ./frontend/src:/usr/src/app/src
+      - ./frontend/public:/usr/src/app/public
     ports:
-      - "5000:5000"
+      - "3000:3000"
     env_file: ./frontend/.env-docker
     depends_on:
       - "api"

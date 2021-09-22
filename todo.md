@@ -1,3 +1,7 @@
+## Handle lack of connectivity to API in frontend
+
+Instead of just logging to console and crashing, show something useful for the user.
+
 ## Tests failing
 
 Fix tests to accept either 401 or 403 on unauthorized access.

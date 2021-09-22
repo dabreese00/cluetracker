@@ -4,6 +4,12 @@ import Api from './api';
 const username = process.env.REACT_APP_API_USERNAME;
 const password = process.env.REACT_APP_API_PASSWORD;
 const api = new Api();
+const emptyGameList = {
+  "count": 0,
+  "next": null,
+  "previous": null,
+  "results": []
+}
 
 function Login () {
   return (
@@ -54,14 +60,7 @@ function Login () {
 //}
 
 function App () {
-  const [games, setGames] = useState(
-    {
-      "count": 0,
-      "next": null,
-      "previous": null,
-      "results": []
-    }
-  );
+  const [games, setGames] = useState(emptyGameList);
 
   useEffect(() => {
     const fetchGames = async () => {

@@ -7,10 +7,10 @@ WORKDIR /usr/src/app
 ENV CI=true
 
 COPY package.json /usr/src/app
-RUN npm install && \
-    npm install -g serve
+RUN npm install
+RUN npm install -g serve
 
-COPY . /usr/src/app
+COPY entrypoint.sh /usr/src/app
 
 # defined in package.json
 CMD ["sh", "./entrypoint.sh"]

@@ -13,7 +13,7 @@ env = environ.Env()
 # Read envvars from .env file if specified to do so
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
-    env.read_env(str(BASE_DIR / ".." / ".env"))
+    env.read_env(str(BASE_DIR / ".env"))
 
 # Determine basic dev/security settings from envvars
 DEBUG = env.bool('DJANGO_DEBUG', False)
