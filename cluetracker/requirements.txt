@@ -9,7 +9,10 @@ asgiref==3.4.1
 django==3.2.7
     # via
     #   -r requirements.in
+    #   django-cors-headers
     #   djangorestframework
+django-cors-headers==3.8.0
+    # via -r requirements.in
 django-environ==0.7.0
     # via -r requirements.in
 djangorestframework==3.12.4

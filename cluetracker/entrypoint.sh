@@ -2,8 +2,6 @@
 
 set -e
 
-cd cluetracker
-
 echo "{0}: running database migrations."
 python manage.py migrate --no-input
 

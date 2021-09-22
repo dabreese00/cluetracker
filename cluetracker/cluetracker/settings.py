@@ -13,13 +13,13 @@ env = environ.Env()
 # Read envvars from .env file if specified to do so
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
 if READ_DOT_ENV_FILE:
-    env.read_env(str(BASE_DIR / ".." / ".env"))
+    env.read_env(str(BASE_DIR / ".env"))
 
 # Determine basic dev/security settings from envvars
 DEBUG = env.bool('DJANGO_DEBUG', False)
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', [])
-
+CORS_ORIGIN_WHITELIST = env.list('DJANGO_CORS_ORIGIN_WHITELIST', [])
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -29,11 +29,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
     'games',
     'games.api',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -114,5 +118,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',  # noqa: 501
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
 }
