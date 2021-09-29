@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Api from './api';
+import Api from './lib/api';
 
 const username = process.env.REACT_APP_API_USERNAME;
 const password = process.env.REACT_APP_API_PASSWORD;
