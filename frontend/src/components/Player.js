@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Player(
   {
@@ -10,8 +11,15 @@ export default function Player(
   }
 ) {
   return (
-    <div className="list-item">
-      <input type="text" value={name} readOnly={true} />
+    <div className="list-item list-box-default">
+      {name + "  |  " + hand_size + " cards in hand"}
     </div>
   );
+}
+Player.propTypes = {
+  player: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    hand_size: PropTypes.number.isRequired,
+  })
 }

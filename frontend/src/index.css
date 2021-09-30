@@ -1,13 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --brand-default: #298000;
+  --light-default: #F9F7EC;
+  --dark-light: #6C6F79;
+  --dark-default: #54575E;
+}
+
+* {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 29px;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 29px;
+}
+
+h2 {
+  font-size: 33px;
+  line-height: 39px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.list-box-empty {
+  background: var(--dark-light);
+  border-radius: 5px;
+  border-width: 0px;
+  height: 44px;
+
+  margin-top: 9px;
+  margin-bottom: 9px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.list-box-default {
+  display: flex;
+  background: var(--brand-default);
+  border-radius: 5px;
+  border-width: 0px;
+  height: 44px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  padding-left: 15px;
+  padding-right: 15px;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--light-default);
+}
+
+.add-player-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 9px;
+}
+
+.add-player-form .add-player-form-control {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+#player-name-form-control {
+  flex-grow: 10;
+}
+
+#hand-size-form-control {
+  width: 83px;
+}
+
+#add-player-submit-control {
+  flex-grow: 2;
+}
+
+.add-player-form input[type="submit"] {
+  display: flex;
+  background: var(--brand-default);
+  border-radius: 5px;
+  border-width: 0px;
+
+  height: 44px;
+
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.25);
+
+  margin-left: 10px;
+
+  padding-left: 15px;
+  padding-right: 15px;
+
+  align-items: center;
+  justify-content: center;
+
+  color: var(--light-default);
+}
+
+.add-player-form input[type="text"] {
+  background: var(--light-default);
+  border-radius: 5px;
+  border-width: 0px;
+  height: 44px;
+
+  box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.add-player-form label {
+  color: var(--light-default);
+}
+
+.add-player-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-default);
+  border-radius: 7px;
+  padding: 10px;
+  color: var(--light-default);
+}
+
+.add-player-card h2 {
+  text-align: center;
+  margin: 10px;
 }

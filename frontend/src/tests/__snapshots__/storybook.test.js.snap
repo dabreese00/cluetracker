@@ -1,13 +1,134 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots AddPlayerCard Default 1`] = `
+<div
+  className="add-player-card"
+>
+  <h2>
+    Add Players
+  </h2>
+  <div
+    className="list-item list-box-default"
+  >
+    Player 1  |  4 cards in hand
+  </div>
+  <div
+    className="list-item list-box-default"
+  >
+    Player 2  |  3 cards in hand
+  </div>
+  <div
+    className="list-item list-box-default"
+  >
+    Player 3  |  3 cards in hand
+  </div>
+  <div
+    className="list-box-empty"
+  />
+  <div
+    className="list-box-empty"
+  />
+  <div
+    className="list-box-empty"
+  />
+  <form
+    className="add-player-form"
+  >
+    <div
+      className="add-player-form-control"
+      id="player-name-form-control"
+    >
+      <input
+        id="player-name-field"
+        name="name"
+        type="text"
+      />
+      <label
+        for="player-name-field"
+      >
+        Player name
+      </label>
+    </div>
+    <div
+      className="add-player-form-control"
+      id="hand-size-form-control"
+    >
+      <input
+        id="hand-size-field"
+        name="hand-size"
+        type="text"
+      />
+      <label
+        for="hand-size-field"
+      >
+        Hand size
+      </label>
+    </div>
+    <div
+      className="add-player-form-control"
+      id="add-player-submit-control"
+    >
+      <input
+        id="add-player-button"
+        type="submit"
+        value="Add player"
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Storyshots AddPlayerForm Default 1`] = `
+<form
+  className="add-player-form"
+>
+  <div
+    className="add-player-form-control"
+    id="player-name-form-control"
+  >
+    <input
+      id="player-name-field"
+      name="name"
+      type="text"
+    />
+    <label
+      for="player-name-field"
+    >
+      Player name
+    </label>
+  </div>
+  <div
+    className="add-player-form-control"
+    id="hand-size-form-control"
+  >
+    <input
+      id="hand-size-field"
+      name="hand-size"
+      type="text"
+    />
+    <label
+      for="hand-size-field"
+    >
+      Hand size
+    </label>
+  </div>
+  <div
+    className="add-player-form-control"
+    id="add-player-submit-control"
+  >
+    <input
+      id="add-player-button"
+      type="submit"
+      value="Add player"
+    />
+  </div>
+</form>
+`;
+
 exports[`Storyshots Player Default 1`] = `
 <div
-  className="list-item"
+  className="list-item list-box-default"
 >
-  <input
-    readOnly={true}
-    type="text"
-    value="Bob"
-  />
+  Bob  |  3 cards in hand
 </div>
 `;
