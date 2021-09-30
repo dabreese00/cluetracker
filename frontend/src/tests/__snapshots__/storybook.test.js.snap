@@ -2,12 +2,8 @@
 
 exports[`Storyshots Player Default 1`] = `
 <div
-  className="list-item"
+  className="list-item list-box-default"
 >
-  <input
-    readOnly={true}
-    type="text"
-    value="Bob"
-  />
+  Bob  |  3 cards in hand
 </div>
 `;
