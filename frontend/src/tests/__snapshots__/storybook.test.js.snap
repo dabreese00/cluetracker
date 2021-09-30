@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Player Default 1`] = `
+<div
+  className="list-item"
+>
+  <input
+    readOnly={true}
+    type="text"
+    value="Bob"
+  />
+</div>
+`;
