@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Api from './lib/api';
+import AddPlayerCard from './components/AddPlayerCard';
 
 const username = process.env.REACT_APP_API_USERNAME;
 const password = process.env.REACT_APP_API_PASSWORD;
@@ -10,6 +11,11 @@ const emptyGameList = {
   "previous": null,
   "results": []
 }
+const dummyPlayers = [
+    { id: 1, name: 'Player 1', hand_size: 4 },
+    { id: 2, name: 'Player 2', hand_size: 3 },
+    { id: 3, name: 'Player 3', hand_size: 3 },
+];
 
 function Login () {
   return (
@@ -18,46 +24,6 @@ function Login () {
     </button>
   );
 }
-
-//function PlayerList() {
-//  const [players, setPlayers] = useState({});
-//
-//  return (
-//    <div>
-//      {players.results.map(item => (
-//        <div key={item.id}>
-//          <h2>Player {item.name}</h2>
-//          <span><p>{item.hand_size}</p></span>
-//          <span><p>{item.url}</p></span>
-//        </div>
-//      ))}
-//    </div>
-//  );
-//}
-//
-//function AddPlayer() {
-//  return (
-//    <form>
-//      <label>
-//        Name:
-//        <input type="text" name="name"/>
-//        <input type="text" name="cardcount"/>
-//      </label>
-//      <input type="submit" value="Add"/>
-//    </form>
-//  );
-//}
-//
-//function CreateGame() {
-//  // state i
-//  return (
-//    <div>
-//      <PlayerList />
-//      <AddPlayer />
-//      <input type="submit" value="Done entering players"/>
-//    </div>
-//  );
-//}
 
 function App () {
   const [games, setGames] = useState(emptyGameList);
@@ -79,6 +45,8 @@ function App () {
     <div>
       <div className="login"><Login /></div>
       <h1>ClueTracker</h1>
+      <AddPlayerCard players={dummyPlayers}/>
+      <h2>Games</h2>
       {games.results.map(item => (
         <div key={item.id}>
           <h2>Game {item.id}</h2>

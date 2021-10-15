@@ -23,9 +23,28 @@ body {
   line-height: 29px;
 }
 
+h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 44px;
+  line-height: 52px;
+}
+
 h2 {
+  font-family: Roboto;
   font-size: 33px;
   line-height: 39px;
+  font-style: normal;
+  font-weight: normal;
+}
+
+h3 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 27px;
 }
 
 code {

@@ -44,7 +44,7 @@ exports[`Storyshots AddPlayerCard Default 1`] = `
         type="text"
       />
       <label
-        for="player-name-field"
+        htmlFor="player-name-field"
       >
         Player name
       </label>
@@ -59,7 +59,7 @@ exports[`Storyshots AddPlayerCard Default 1`] = `
         type="text"
       />
       <label
-        for="hand-size-field"
+        htmlFor="hand-size-field"
       >
         Hand size
       </label>
@@ -92,7 +92,7 @@ exports[`Storyshots AddPlayerForm Default 1`] = `
       type="text"
     />
     <label
-      for="player-name-field"
+      htmlFor="player-name-field"
     >
       Player name
     </label>
@@ -107,7 +107,7 @@ exports[`Storyshots AddPlayerForm Default 1`] = `
       type="text"
     />
     <label
-      for="hand-size-field"
+      htmlFor="hand-size-field"
     >
       Hand size
     </label>
