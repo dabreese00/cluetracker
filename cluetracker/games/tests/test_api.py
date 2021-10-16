@@ -6,6 +6,9 @@ from rest_framework import status
 from games.models import Game, Player, Card, Have, Pass, Show
 
 
+HTTP_ANON_DENIED_STATUS = status.HTTP_401_UNAUTHORIZED
+
+
 class APITestCase(TestCase):
     """
     Base test class for API tests.
@@ -108,7 +111,7 @@ class APIViewTestCases():
 
             self.assertHttpStatus(
                 self.client.get(url),
-                status.HTTP_403_FORBIDDEN
+                HTTP_ANON_DENIED_STATUS
             )
 
         def test_get_object(self):
@@ -131,7 +134,7 @@ class APIViewTestCases():
             GET a list of objects as an unauthenticated user.
             """
             response = self.client.get(self._get_list_url())
-            self.assertHttpStatus(response, status.HTTP_403_FORBIDDEN)
+            self.assertHttpStatus(response, HTTP_ANON_DENIED_STATUS)
 
         def test_list_objects(self):
             """
@@ -159,7 +162,7 @@ class APIViewTestCases():
                 self.create_data[0],
                 format='json'
             )
-            self.assertHttpStatus(response, status.HTTP_403_FORBIDDEN)
+            self.assertHttpStatus(response, HTTP_ANON_DENIED_STATUS)
 
         def test_create_object(self):
             """
@@ -193,7 +196,7 @@ class APIViewTestCases():
             update_data = self.update_data or getattr(self, 'create_data')[0]
 
             response = self.client.patch(url, update_data, format='json')
-            self.assertHttpStatus(response, status.HTTP_403_FORBIDDEN)
+            self.assertHttpStatus(response, HTTP_ANON_DENIED_STATUS)
 
         def test_update_object(self):
             """
@@ -221,7 +224,7 @@ class APIViewTestCases():
             """
             url = self._get_detail_url(self._get_queryset().first())
             response = self.client.delete(url)
-            self.assertHttpStatus(response, status.HTTP_403_FORBIDDEN)
+            self.assertHttpStatus(response, HTTP_ANON_DENIED_STATUS)
 
         def test_delete_object(self):
             """
