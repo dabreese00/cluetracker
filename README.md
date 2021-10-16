@@ -19,7 +19,7 @@ For the frontend, first install Node version 16 or higher.  Then, within the `fr
 
 For the backend, first install Python version 3.8 or higher.
 
-Then, within the `cluetracker/` subdirectory (where the `manage.py` file lives), setup and activate a *virtual environment*:
+Then, within the `cluetracker/` subdirectory (where the `manage.py` file lives), setup and activate a **virtual environment**:
 
     python3 -m venv .venv
     source .venv/bin/activate
@@ -31,20 +31,20 @@ Finally, install the dependencies with `pip-tools`:
 
 In the first command, replace `python3` with the name or full path of your Python 3 executable, if different.
 
-Whenever you work with the backend, first *ensure that the virtual environment is activated*.
+Whenever you work with the backend, first **ensure that the virtual environment is activated**.
 
 If you're looking for a clean way to install and maintain the correct Node and Python versions on your system, recommend using `nvm` and `pyenv`, respectively.
 
 ### Configuration
 
-To configure both frontend and backend apps locally, *adjust the variables* defined in the `.env` files within each respective folder, according to your needs.
+To configure both frontend and backend apps locally, **adjust the variables** defined in the `.env` files within each respective folder, according to your needs.
 
-For the backend, you will also have to make sure the *environment variable* `DJANGO_READ_DOT_ENV_FILE` is set to the value of `True`, otherwise Django will simply ignore your `.env` file.
+For the backend, you will also have to make sure the **environment variable** `DJANGO_READ_DOT_ENV_FILE` is set to the value of `True`, otherwise Django will simply ignore your `.env` file.
 
 For now, since self-registration and login via the UI is not implemented yet,
-you need to *create an admin user* in the backend, in order to allow the
+you need to **create an admin user** in the backend, in order to allow the
 frontend to talk to the backend/API.  Make sure the variables in
-`frontend/.env-docker` file match whatever credentials you setup here:
+`frontend/.env` file match whatever credentials you setup here:
 
     python manage.py createsuperuser
 
@@ -78,13 +78,13 @@ For the frontend, tests are run with:
 
 ### Developing frontend with Storybook
 
-You can use Storybook to develop the frontend React components in isolation.  This way, you can *see, test, and evaluate each component separately*, viewing all of its possible states, without needing to integrate it into your entire webpage.
+You can use Storybook to develop the frontend React components in isolation.  This way, you can **see, test, and evaluate each component separately**, viewing all of its possible states, without needing to integrate it into your entire webpage.
 
 To start the Storybook interface, run:
 
     npm run storybook
 
-A browser window for Storybook should pop up, where you can browse your various components that you've defined Stories for.  See *Storybook docs* on their website for more info.
+A browser window for Storybook should pop up, where you can browse your various components that you've defined Stories for.  See **Storybook docs** on their website for more info.
 
 
 ## Docker
@@ -106,8 +106,8 @@ If the `api` service fails at first because postgres is not available yet, stop
 all the docker containers (without destroying them) and try again.  (TODO:
 Implement a check-and-wait till postgres is up, using e.g.  `django-probes`.)
 
-Create an admin user, and again make sure the variables in
-`frontend/.env-docker` file match whatever credentials you setup here:
+Create an admin user, and make sure the variables in `frontend/.env-docker`
+file match whatever credentials you setup here:
 
     docker-compose exec api python manage.py createsuperuser
 
